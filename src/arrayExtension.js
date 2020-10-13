@@ -16,8 +16,17 @@
  * Returns the sum of all object's numbers.
  *
  * @param {{nr: number}[]} source - An array of objects to analyze.
+ * @throws {TypeError} - Throws error if input is not an array.
  * @returns {number} - The total sum of the nr property of the objects in the provided array.
  */
 export function getSum (source) {
-  // TODO: Write your code here!
+  if (!Array.isArray(source)) {
+    throw new TypeError('The passed argument is not an array.')
+  }
+
+  const sum = source
+        .map(element => element.nr)
+        .reduce((a, b) => a + b, 0)
+
+  return sum
 }
